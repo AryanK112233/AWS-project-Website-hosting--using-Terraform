@@ -1,11 +1,11 @@
-# Website hosting using Terraform - AWS projrct
+# Website hosting using Terraform - AWS project
 
 ### Aim: 
 #### * To host a static website in AWS infrastructure using Terraform. 
 
 ### What you will accomplish : 
 * Install and configure Terraform in Windows.
-* Setup AWS access configuration on your windows system.
+* Setup AWS access configuration on your Windows system.
 * Set Terraform provider as AWS.
 * Build a website using Terraform.
 
@@ -26,15 +26,15 @@
 * Go to the official website of Terraform provided by Hashicorp.  
 https://developer.hashicorp.com/terraform/install  
 
-* Navigate and download 386 file for windows,
+* Navigate and download 386 file for Windows,
 ![alt text](image-1.png)
 * A zipped folder will start downloading. Extract the exe file to Local disk C >> program files >> Terraform (create a folder to keep files organized) and paste.
-*  Create an enviorment variable path accordingly to access Terraform easily in any terminal
+*  Create an environment variable path accordingly to access Terraform easily in any terminal
 ![alt text](image-2.png)
 
-Now Terraform is installed . Lets install Hashicorp Terraform extension in vscode.
+Now Terraform is installed. Let's install the Hashicorp Terraform extension in vscode.
 
-* Open vscode and in extensions section search for Hashicorp Terraform and  install it.  
+* Open vscode and in the extensions section search for Hashicorp Terraform and  install it.  
 
 
 ![alt text](image-3.png)
@@ -43,10 +43,10 @@ Now Terraform is installed . Lets install Hashicorp Terraform extension in vscod
 Now Terraform is installed and configured successfully.
 
 
-### 2. Configure system for AWS access.
-#### Note : make sure you have AWS cli already installed in your system.
-* In your aws account go to Security credentials and create an access key. We will use this key to grant permissions for our  system to utilize aws resources .
-* Open a new powershell terminal and run this command :
+### 2. Configure the system for AWS access.
+#### Note: make sure you have AWS CLI already installed in your system.
+* In your AWS account go to Security credentials and create an access key. We will use this key to grant permissions for our  system to utilize AWS resources.
+* Open a new Powershell terminal and run this command :
 ```bash
 aws configure
 ```
@@ -55,23 +55,23 @@ aws configure
 
 
 ### 3. Set Terraform provider.
-* Go to this website and search for providers . 
+* Go to this website and search for providers. 
 https://registry.terraform.io/providers/hashicorp/aws/latest  
 
 
 * Click on use provider. It will show us a code.  
 ![alt text](image-5.png)
-* Save this code in a seperate provider.tf file.
+* Save this code in a separate provider.tf file.
 * Run this command to initialize Terraform in your directory.
 ```bash
 terraform init
 ```
 ### 4. Building website 
-* In this project we are creating a new seperate VPC witn 2 Public subnets, a route table and an Internet Gateway.
-* A security group will be created for our VPC. In this group both subnets will have ingress rule with cidr-block as [0.0.0.0/0] and ports as 22 and 80 to allow inbound traffic.
+* In this project we are creating a new separate VPC with 2 Public subnets, a route table, and an Internet Gateway.
+* A security group will be created for our VPC. In this group, both subnets will have an ingress rule with cidr-block as [0.0.0.0/0] and ports as 22 and 80 to allow inbound traffic.
 * An egress rule will be created to allow our website to serve our external traffic with cidr-block as [0.0.00.0/0] and ports= -1 (Allowing all ports).
 * Two EC2 instances(webservers) will be running our website . These instances will be deployed in our public subnets which we created earlier.
-* A Loadbalancer will be provisioned to manage requests on our website.
+* A load balancer will be provisioned to manage requests on our website.
 
 #### * Complete code is available in the main.tf file.  
 #### * Two bash scripts will be available to setup our website on our EC2 instances.
